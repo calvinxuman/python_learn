@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
 
-L = ['Hello', 'World', 18, 'Apple', None]
-print([s.lower() for s in L if isinstance(s,str)])
+def f(x):
+    return x*x
+r = map(f,[1,2,3,4,5])
+print(next(r))
+print(next(r))
+print(next(r))
+print(next(r))

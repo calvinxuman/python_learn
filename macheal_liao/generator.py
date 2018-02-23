@@ -39,7 +39,7 @@ def fab(max):
 
 也就是说，上面的函数和generator仅一步之遥。要把fib函数变成generator，只需要把print(b)改为yield b就可以了
 
-这就是定义generator的另一种方法。如果一个函数定义中包含yield关键字，那么这个函数就不再是一个普通函数，而是一个generato'''
+这就是定义generator的另一种方法。如果一个函数定义中包含yield关键字，那么这个函数就不再是一个普通函数，而是一个generator'''
 
 
 #杨辉三角
@@ -50,8 +50,11 @@ def triangles():
         L.append(0)
         L=[L[i-1] + L[i] for i in range(len(L))]
 
-print(next(L))
-print(next(triangles()))
-print(next(triangles()))
-print(next(triangles()))
-print(next(triangles()))
+
+if __name__ == '__main__':
+    n=0
+    for t in triangles():
+        print(t)
+        n=n+1
+        if n == 10:
+            break
