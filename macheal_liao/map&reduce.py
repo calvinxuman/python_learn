@@ -20,5 +20,32 @@ def fn(x, y):
 #利用map()函数，把用户输入的不规范的英文名字，变为首字母大写，其他小写的规范名字。
 # 输入：['adam', 'LISA', 'barT']，输出：['Adam', 'Lisa', 'Bart']
 def normalize(name):
-    return name.capitalize()
-print(list(map(normalize,['adam', 'LISA', 'barT'])))
+    name = name[0].upper()+name[1:].lower()
+    return name
+    #return name.capitalize()
+#print(list(map(normalize,['adam', 'LISA', 'barT'])))
+
+
+#请编写一个prod()函数，可以接受一个list并利用reduce()求积
+def prod(L):
+    def multiply(x,y):
+        return x*y
+    return reduce(multiply,L)
+#print(prod([3, 5, 7, 9]))
+
+#利用map和reduce编写一个str2float函数，把字符串'123.456'转换成浮点数123.456
+def str2float(s):
+    s1 = s.split('.')[0]  #取整数部分
+    s2 = s.split('.')[1][::-1]   #取小数部分并倒序排列
+    def str2int(st):
+        d1 = {'1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '0': 0}
+        return d1[st]
+    i1 = list(map(str2int,s1))  #生成整数部分（整形），并转化为列表
+    i2 = list(map(str2int,s2))  #生成小数部分（整形），并转化为列表
+    def f1(a,b):
+        return a*10 + b
+    def f2(a,b):
+        return a*0.1 + b
+    return reduce(f1,i1)+reduce(f2,i2)*0.1
+print(str2float('123.45600'))
+

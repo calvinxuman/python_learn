@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 
-def f(x):
-    return x*x
-r = map(f,[1,2,3,4,5])
-print(next(r))
-print(next(r))
-print(next(r))
-print(next(r))
+def count():
+    fs = []
+    for i in range(1, 4):
+        def f():
+             return i*i
+        fs.append(f)
+    return fs
+
+f1, f2, f3 = count()
+print(f1())
