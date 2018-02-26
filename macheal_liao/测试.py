@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
-def count():
-    fs = []
-    for i in range(1, 4):
-        def f():
-             return i*i
-        fs.append(f)
-    return fs
+def is_odd(n):
+    return n % 2 == 1
 
-f1, f2, f3 = count()
-print(f1())
+L = list(filter(is_odd, range(1, 20)))
+
+L2= list(filter(lambda x:x % 2 ==1,range(1, 20)))
+
+print(L)
+print(L2)
+
+
+

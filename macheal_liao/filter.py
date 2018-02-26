@@ -21,6 +21,7 @@ def _odd_iter():    #先构造一个从3开始的奇数序列
     while True:
         n = n + 2
         yield n
+
 def _not_divisible(n):   #然后定义一个筛选函数
     return lambda x: x % n > 0
 
