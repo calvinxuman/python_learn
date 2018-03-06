@@ -1,47 +1,52 @@
 # -*- coding: utf-8 -*-
 
-#给一个Screen对象加上width和height属性，以及一个只读属性resolution
-class Screen():
-    #__slots__ = ('width','height','resolution')
+import unittest
 
-    # def __init__(self,width,height):
-    #     self.__width = width
-    #     self.__height = height
+class Student(object):
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+    def get_grade(self):
+        if  self.score > 100 or self.score < 0:
+            raise ValueError
+        if self.score >= 80:
+            return 'A'
+        if self.score >= 60:
+            return 'B'
+        return 'C'
 
-    @property
-    def width(self):
-        return self.__width
 
-    @width.setter
-    def width(self,width):
-        if not isinstance(width,int):
-            raise ValueError('width must be an integer!')
-        if width < 0 or width > 1920:
-            raise ValueError('width must between 0 ~ 1920!')
-        else:
-            self.__width = width
+class TestStudent(unittest.TestCase):
 
-    @property
-    def height(self):
-        return self.__height
+    def test_80_to_100(self):
+        s1 = Student('Bart', 80)
+        s2 = Student('Lisa', 100)
+        self.assertEqual(s1.get_grade(), 'A')
+        self.assertEqual(s2.get_grade(), 'A')
 
-    @height.setter
-    def height(self,height):
-        if not isinstance(height,int):
-            raise ValueError('height must be an integer!')
-        if height < 0 or height > 1080:
-            raise ValueError('height must between 0 ~ 1080!')
-        else:
-            self.__height = height
+    def test_60_to_80(self):
+        s1 = Student('Bart', 60)
+        s2 = Student('Lisa', 79)
+        self.assertEqual(s1.get_grade(), 'B')
+        self.assertEqual(s2.get_grade(), 'B')
 
-    @property
-    def resolution(self):
-        return self.__width * self.__height
+    def test_0_to_60(self):
+        s1 = Student('Bart', 0)
+        s2 = Student('Lisa', 59)
+        self.assertEqual(s1.get_grade(), 'C')
+        self.assertEqual(s2.get_grade(), 'C')
 
-s = Screen()
-s.width = 1920
-s.height = 1080
-print('resolution =', s.resolution)
+    def test_invalid(self):
+        s1 = Student('Bart', -1)
+        s2 = Student('Lisa', 101)
+        with self.assertRaises(ValueError):
+            s1.get_grade()
+        with self.assertRaises(ValueError):
+            s2.get_grade()
+
+if __name__ == '__main__':
+    unittest.main()
+
 
 
 

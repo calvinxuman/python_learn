@@ -3,6 +3,7 @@
 # @Time    : 2018/3/1  14:57
 # @Author  : calvin
 
+
 class Student():
     def __init__(self,name,gender):
         self.__name = name
@@ -28,4 +29,6 @@ bart.set_gender('female')
 print(bart.get_gender())
 bart.set_gender('null')
 print(bart.get_name())
+
+
 
