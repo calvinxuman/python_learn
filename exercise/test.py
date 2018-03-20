@@ -3,10 +3,11 @@
 # @Time    : 2018/3/9  10:00
 # @Author  : calvin
 
-import re
-key = r"<html><body><h1>hello world<h1></body></html>"
-regs = r'(?<=<h1>).+?(?=<h1>)'
-reg = re.compile(regs)
-list1= re.search(reg,key)
-print(list1.group(1))
+import copy
 
+l1 = [[1,2,3],4,5,6]
+l2 = l1.copy()
+l3 = copy.deepcopy(l1)
+l1[0] = [1,2,8]
+print(l2)
+print(l3)
